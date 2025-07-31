@@ -6,6 +6,8 @@ workflows:
     scripts:
       - name: Build iOS app
         script: |
+          cd pwa
+
           xcodebuild -project Drop2Life.xcodeproj \
                      -scheme Drop2Life \
                      -sdk iphoneos \
@@ -14,7 +16,7 @@ workflows:
 
           xcodebuild -exportArchive \
                      -archivePath $HOME/build.xcarchive \
-                     -exportOptionsPlist exportOptions.plist \
+                     -exportOptionsPlist ../exportOptions.plist \
                      -exportPath $HOME/build
     artifacts:
       - build/*.ipa
